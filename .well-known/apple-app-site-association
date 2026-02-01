@@ -4,17 +4,11 @@
     "details": [
       {
         "appID": "G6286GRMN5.com.invoisync.io",
-        "paths": [
-             "/mobile_auth_redirect_test/*",
-             "/callback"
-           ]
+        "paths": [ "/callback", "*" ]
       },
       {
         "appID": "G6286GRMN5.com.invoisync.io.debug",
-        "paths": [
-             "/mobile_auth_redirect_test/*",
-             "/callback"
-           ]
+        "paths": [ "/callback", "*" ]
       }
     ]
   }

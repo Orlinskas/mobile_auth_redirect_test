@@ -1,6 +1,6 @@
 # Тестовый провайдер авторизации для мобильных приложений
 
-https://orlinskas.github.io/mobile_auth_redirect_test/index.html
+https://orlinskas.github.io/mobile_auth_redirect_test/
 
 Статический веб-сайт, размещенный на GitHub Pages, предназначенный для тестирования **Android App Links** и **iOS Universal Links**. Этот тестовый провайдер авторизации имитирует процесс входа и перенаправляет пользователей обратно в ваше мобильное приложение с использованием глубоких ссылок.
 

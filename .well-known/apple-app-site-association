@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.com.example.yourapp",
+        "paths": [
+          "/auth-test/*",
+          "/callback"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "TEAMID.com.example.yourapp"
+    ]
+  }
+}

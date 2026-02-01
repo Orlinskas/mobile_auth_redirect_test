@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback - Mock Auth Provider</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #48bb78;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 40px;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            color: #1a202c;
+            font-size: 28px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #718096;
+            font-size: 16px;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .params-box {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .params-box h3 {
+            color: #2d3748;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .param-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+            word-break: break-all;
+        }
+
+        .param-item:last-child {
+            border-bottom: none;
+        }
+
+        .param-label {
+            color: #718096;
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 12px;
+        }
+
+        .param-value {
+            color: #2d3748;
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+            background: #edf2f7;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .info-message {
+            background: #bee3f8;
+            border-left: 4px solid #3182ce;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .info-message p {
+            color: #2c5282;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .info-message strong {
+            font-weight: 600;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .param-item {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✓</div>
+        <h1>Authorization Successful!</h1>
+        <p class="subtitle">The app should have opened automatically</p>
+
+        <div class="info-message">
+            <p><strong>For Developers:</strong> If you're seeing this page, it means the deep link/universal link didn't trigger. This usually happens when testing in a desktop browser. On a mobile device with your app installed, this page would not be visible as the app would intercept the URL.</p>
+        </div>
+
+        <div class="params-box">
+            <h3>Callback Parameters</h3>
+            <div id="params-container">
+                <p style="color: #a0aec0; font-style: italic;">No parameters received</p>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-button">← Back to Login</a>
+    </div>
+
+    <script>
+        // Parse URL parameters and display them
+        function displayParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const paramsContainer = document.getElementById('params-container');
+            
+            if (urlParams.toString()) {
+                paramsContainer.innerHTML = '';
+                urlParams.forEach((value, key) => {
+                    const paramItem = document.createElement('div');
+                    paramItem.className = 'param-item';
+                    paramItem.innerHTML = `
+                        <span class="param-label">${key}:</span>
+                        <span class="param-value">${value}</span>
+                    `;
+                    paramsContainer.appendChild(paramItem);
+                });
+            }
+        }
+
+        // Display full URL for debugging
+        console.log('Callback URL:', window.location.href);
+        console.log('Query Parameters:', window.location.search);
+
+        // Initialize
+        displayParams();
+    </script>
+</body>
+</html>

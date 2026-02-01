@@ -3,17 +3,19 @@
     "apps": [],
     "details": [
       {
-        "appID": "TEAMID.com.example.yourapp",
+        "appID": "G6286GRMN5.com.invoisync.io",
         "paths": [
-          "/auth-test/*",
-          "/callback"
-        ]
+             "/mobile_auth_redirect_test/*",
+             "/callback"
+           ]
+      },
+      {
+        "appID": "G6286GRMN5.com.invoisync.io.debug",
+        "paths": [
+             "/mobile_auth_redirect_test/*",
+             "/callback"
+           ]
       }
-    ]
-  },
-  "webcredentials": {
-    "apps": [
-      "TEAMID.com.example.yourapp"
     ]
   }
 }
